@@ -161,10 +161,17 @@
               forward-delay: 0
               hello-time: 2
               max-age: 20
-            {% if br_ext_phys_interface -%}
+      {% if br_ext_phys_interface %}
             interfaces:
               - {{ br_ext_phys_interface }}
-            {% endif %}
+      {% endif %}
+      {% if 'cmps' in group_names %}
+            routes:
+              - to: {{ cats_mgmt_cidr }}
+                via: {{ ext_base_gateway_switch_gtw }}
+              - to: {{ dogs_mgmt_cidr }}
+                via: {{ ext_base_gateway_switch_gtw }}
+      {% endif %}
 
 # Clear addresses still bound in the kernel after cloud-init netplan was pruned (ignored if iface missing).
 - name: Flush IP addresses from pruned physical interfaces
