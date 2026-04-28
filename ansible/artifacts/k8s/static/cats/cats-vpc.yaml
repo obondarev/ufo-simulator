@@ -11,18 +11,6 @@ spec: {}
 apiVersion: ufo.mirantis.com/v1alpha1
 kind: VpcPeeringPolicy
 metadata:
-  name: allow-from-cats
-  namespace: kcm-system
-spec:
-  local_vpc:
-    name: internet
-  allowed_vpcs:
-    - vpcName: '*'
-      vpcNamespace: cats
----
-apiVersion: ufo.mirantis.com/v1alpha1
-kind: VpcPeeringPolicy
-metadata:
   name: allow-from-kcm-system
   namespace: cats
 spec:
