@@ -48,6 +48,7 @@ spec:
       - sudo useradd -G sudo -s /bin/bash -d /home/rescue -p $(openssl passwd -1 rescue) rescue
       - sudo mkdir -vp /home/rescue/.ssh/
       - sudo chown rescue /home/rescue/.ssh/authorized_keys
+      - /usr/bin/sleep 180
     files:
     - content: |
         PasswordAuthentication yes
@@ -102,6 +103,7 @@ spec:
         - sudo useradd -G sudo -s /bin/bash -d /home/rescue -p $(openssl passwd -1 rescue) rescue
         - sudo mkdir -vp /home/rescue/.ssh/
         - sudo chown rescue /home/rescue/.ssh/authorized_keys
+        - /usr/bin/sleep 180
       files:
       - content: |
           PasswordAuthentication yes
