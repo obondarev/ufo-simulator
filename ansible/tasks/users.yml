@@ -9,6 +9,14 @@
     create_home: true
   loop: "{{ users }}"
 
+- name: Set home directory permissions
+  ansible.builtin.file:
+    path: "/home/{{ item.username }}"
+    state: directory
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+  loop: "{{ users }}"
+
 - name: Create .ssh
   ansible.builtin.file:
     path: "/home/{{ item.username }}/.ssh"
